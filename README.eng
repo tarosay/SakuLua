@@ -1,0 +1,66 @@
+SakuLua Ver 1.06
+SakuLua is a program for executing a Lua script alone GR-SAKURA.
+
+How to Build
+Lua regard, I have created based on the Lua-5.1.5. From the following URL, please obtain the source of the Lua-5.1.5.
+Lua Version history [here] (http://www.lua.org/versions.html#5.1)
+The current release is Lua 5.1.5, released on 17 Feb 2012.
+
+  After extracting the Lua-5.1.5, then remove the following files from the src folder and put it 'gr_Lua/lua' folder, please place your lua-5.1.5.patch.
+
+Place the following files in the 'gr_Lua/lua/'.
+lapi.c
+lapi.h
+lauxlib.c
+lauxlib.h
+lbaselib.c
+lcode.c
+lcode.h
+ldebug.c
+ldebug.h
+ldo.c
+ldo.h
+ldump.c
+lfunc.c
+lfunc.h
+lgc.c
+lgc.h
+linit.c
+llex.c
+llex.h
+llimits.h
+lmathlib.c
+lmem.c
+lmem.h
+lobject.c
+lobject.h
+lopcodes.c
+lopcodes.h
+lparser.c
+lparser.h
+lstate.c
+lstate.h
+lstring.c
+lstring.h
+lstrlib.c
+ltable.c
+ltable.h
+ltablib.c
+ltm.c
+ltm.h
+lua.h
+luaconf.h
+lualib.h
+lundump.c
+lundump.h
+lvm.c
+lvm.h
+lzio.c
+lzio.h
+
+$ patch < lua-5.1.5.patch
+
+Lua is more than ready for.
+
+To build a SakuLua, is required 'I2C Library for GR-SAKURA' and 'SDMMC Library for GR-SAKURA'.
+After Import of these, please build.
