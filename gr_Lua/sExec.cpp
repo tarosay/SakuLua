@@ -1,10 +1,10 @@
 //************************************************************************
-// SakuLuaの呼び出し実行モジュールプログラム 2012.12.4 v1.06
+// SakuLuaの呼び出し実行モジュールプログラム 2013.1.29 v1.07
 //************************************************************************
 #include <rxduino.h>
 #include <string.h>
 
-volatile char	ProgVer[] = {"1.06"};
+volatile char	ProgVer[] = {"1.07"};
 
 #include "../gr_sakura_sdmmc/sdmmc.h"
 #include "sExec.h"
@@ -15,6 +15,7 @@ volatile char	ProgVer[] = {"1.06"};
 #include "sWire.h"
 #include "sRTC.h"
 #include "../i2clcd.h"
+#include "sSdFile.h"
 
 lua_State	*LuaLinkP;
 
@@ -26,7 +27,7 @@ extern SDMMC MicroSD;
 extern File SdFile;
 
 static const luaL_Reg RTCTbl[] = {
- 	{"begin", adkRTCbegin },
+// 	{"begin", adkRTCbegin },
 	{"set", adkRTCsetDateTime },
  	{"get", adkRTCgetDateTime },
 	{NULL,NULL}
@@ -52,6 +53,8 @@ static const luaL_Reg I2CLcdTbl[] = {
 static const luaL_Reg SerialTbl[] = {
 	{"print", serialPrint },
 	{"println", serialPrintln },
+	{"read", serialRead },
+	{"write", serialWrite },
 	{"XBee", serialXBee },
 	{"USB", serialUSB },
 	{"setDef", serialSetDefault },
@@ -62,6 +65,15 @@ static const luaL_Reg SystemTbl[] = {
 	{"setrun", setRun },
 	{"ver", ver },
 	{"exit", systemExit },
+	{NULL,NULL}
+};
+
+static const luaL_Reg SdCardTbl[] = {
+	{"read", sdcardRead },
+	{"seek", sdcardSeek },
+	{"write", sdcardWrite },
+	{"open", sdcardOpen },
+	{"close", sdcardClose },
 	{NULL,NULL}
 };
 
@@ -82,6 +94,7 @@ bool LuaStartFlg = true;
 	lua_register( LuaLinkP, "analogWrite", adkAnalogWrite );
 	lua_register( LuaLinkP, "digitalRead", adkDigitalRead );
 	lua_register( LuaLinkP, "analogRead", adkAnalogRead );
+	lua_register( LuaLinkP, "millis", adkMillis );
 	lua_register( LuaLinkP, "analogWriteDAC", adkAnalogWriteDAC );
 	lua_register( LuaLinkP, "analogWriteFrequency", adkAnalogWriteFrequency );
 	lua_register( LuaLinkP, "pulseIn", adkPulseIn );
@@ -91,6 +104,7 @@ bool LuaStartFlg = true;
 
 	//ライブラリコマンド
 	luaL_register( LuaLinkP, "sys", SystemTbl );
+	luaL_register( LuaLinkP, "SD", SdCardTbl );
 	luaL_register( LuaLinkP, "RTC", RTCTbl );
 	luaL_register( LuaLinkP, "Lcd", I2CLcdTbl );
 	luaL_register( LuaLinkP, "Serial", SerialTbl );

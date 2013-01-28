@@ -1,5 +1,5 @@
 //************************************************************************
-// シリアル通信関連 2012.12.4
+// シリアル通信関連 2013.1.29
 //************************************************************************
 #include <rxduino.h>
 
@@ -66,12 +66,9 @@ int serialSetDefault( lua_State *LuaLinkP )
 }
 
 //**************************************************
-// シリアルに出力します: Serial.print
-//  Serial.print([str])
-//  str: 文字列
-//    省略時は何も出力しません
+// シリアルに出力します
 //**************************************************
-int serialPrint( lua_State *LuaLinkP )
+int serialp(int sw, lua_State *LuaLinkP )
 {
 const char *str;
 
@@ -79,11 +76,27 @@ const char *str;
 
 	if( n>=1 ){
 		str = luaL_checklstring( LuaLinkP, 1, NULL );
-		Serial.print( str );
+		if( sw==0 ){
+			Serial.print( str );
+		}
+		else{
+			Serial.println( str );
+		}
     }
 
 	lua_settop(LuaLinkP, 0);
 	return( 0 );		//戻り値は無しですよ。
+}
+
+//**************************************************
+// シリアルに出力します: Serial.print
+//  Serial.print([str])
+//  str: 文字列
+//    省略時は何も出力しません
+//**************************************************
+int serialPrint( lua_State *LuaLinkP )
+{
+	return serialp( 0, LuaLinkP );
 }
 
 //**************************************************
@@ -94,15 +107,53 @@ const char *str;
 //**************************************************
 int serialPrintln( lua_State *LuaLinkP )
 {
-const char *str;
+	return serialp( 1, LuaLinkP );
+}
 
-    int n = lua_gettop( LuaLinkP );
+//**************************************************
+// シリアルから1バイト取得します: Serial.read
+//  Serial.read()
+// 戻り値
+//	0x00～0xFFの値、データが無いときは-1が返ります
+//**************************************************
+int serialRead( lua_State *LuaLinkP )
+{
+int ret = -1;	
 
-	if( n>=1 ){
-		str = luaL_checklstring( LuaLinkP, 1, NULL );
-		Serial.println( str );
+	if(Serial.available()){
+
+		ret = Serial.read(); //1文字取得
+	}
+
+	lua_settop(LuaLinkP, 0);			//スタックのクリア
+	lua_pushnumber( LuaLinkP, ret );
+
+	return( 1 );		//戻り値は1つですよ。
+}
+
+//**************************************************
+// シリアルにデータを出力します: Serial.write
+//  Serial.write( buf, len )
+//	buf: 出力データ
+//	len: 出力データサイズ
+// 戻り値
+//	出力したバイト数
+//**************************************************
+int serialWrite( lua_State *LuaLinkP )
+{
+	int n = lua_gettop( LuaLinkP );
+	if( n<2 ){
+		LuaErrorMes( LuaLinkP, (char*)"Serial.write", 0 );
+		return( 1 );		//戻り値は1つですよ。
     }
 
-	lua_settop(LuaLinkP, 0);
-	return( 0 );		//戻り値は無しですよ。
+	unsigned char* str = (unsigned char*)luaL_checklstring( LuaLinkP, 1, NULL );
+	int len = lua_tonumber( LuaLinkP, 2 );
+
+	int ret = Serial.write( (const unsigned char *)str, len );
+	
+	lua_settop(LuaLinkP, 0);			//スタックのクリア
+	lua_pushnumber( LuaLinkP, ret );
+
+	return( 1 );		//戻り値は1つですよ。
 }

@@ -1,5 +1,5 @@
 //************************************************************************
-// RTC関連 2012.12.4
+// RTC関連 2013.1.29
 //************************************************************************
 #include <rxduino.h>
 #include <rtc.h>
@@ -12,15 +12,15 @@
 //
 // 結果が返る
 //**************************************************
-int adkRTCbegin( lua_State *LuaLinkP )
-{
-	//RTCスタート
-	int ret = RTC::begin();
-
-	lua_settop(LuaLinkP, 0);
-	lua_pushnumber( LuaLinkP, ret );
-	return( 1 );		//戻り値は無しですよ。
-}
+//int adkRTCbegin( lua_State *LuaLinkP )
+//{
+//	//RTCスタート
+//	int ret = RTC::begin();
+//
+//	lua_settop(LuaLinkP, 0);
+//	lua_pushnumber( LuaLinkP, ret );
+//	return( 1 );		//戻り値は無しですよ。
+//}
 
 //**************************************************
 // RTCの時計をセットする: RTC.set

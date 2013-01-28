@@ -7,7 +7,12 @@ OBJFILES = ./gr_sketch.o ./gr_sakura_wire/instwire.o ./gr_common/intvect.o ./gr_
 			./gr_Lua/lua/lparser.o ./gr_Lua/lua/lstate.o ./gr_Lua/lua/lstring.o ./gr_Lua/lua/lstrlib.o ./gr_Lua/lua/ltable.o \
 			./gr_Lua/lua/ltablib.o ./gr_Lua/lua/ltm.o ./gr_Lua/lua/lundump.o ./gr_Lua/lua/lvm.o ./gr_Lua/lua/lzio.o \
 			./gr_Lua/sExec.o ./gr_Lua/sI2cLcd.o ./gr_Lua/sSdgetF.o ./gr_Lua/sSystem.o ./gr_Lua/sAdk.o \
-			./gr_Lua/sSerial.o ./gr_Lua/sRTC.o ./gr_Lua/sWire.o
+			./gr_Lua/sSerial.o ./gr_Lua/sRTC.o ./gr_Lua/sWire.o ./gr_Lua/sSdFile.o
+
+#			./gr_Lua/lua/loadlib.o \
+#			./gr_Lua/lua/ldblib.o \
+#			./gr_Lua/lua/liolib.o \
+#			./gr_Lua/lua/loslib.o \
 
 LIBFILES = ./gr_common/lib/libc.a ./gr_common/lib/libg.a ./gr_common/lib/libgcc.a ./gr_common/lib/libm.a ./gr_common/lib/librxduino.a \
 			./gr_common/lib/libsim.a ./gr_common/lib/libstdc++.a ./gr_common/lib/libsupc++.a ./gr_common/lib/libtkdnhal.a \

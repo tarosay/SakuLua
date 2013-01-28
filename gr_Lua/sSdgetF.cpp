@@ -1,5 +1,5 @@
 //************************************************************************
-// SDカード読み込みアクセス関係 2012.12.4
+// SDカード読み込みアクセス関係 2013.1.28
 //************************************************************************
 #include <rxduino.h>
 
@@ -8,15 +8,14 @@
 
 #define XML_FILENAME  "sakulua.xml"
 #define LUA_FILENAME  "sakulua.lua"
-#define LUA_FILENAME_SIZE 128
+#define LUA_FILENAME_SIZE 32
 
-char LuaStartFileName[LUA_FILENAME_SIZE];	//iniに指定された最初に起動するLuaファイル名
+char LuaStartFileName[LUA_FILENAME_SIZE];	//xmlに指定された最初に起動するLuaファイル名
 char LuaFilename[LUA_FILENAME_SIZE];
 char ExeFilename[LUA_FILENAME_SIZE];		//現在実行されているファイルのパス名
 
-
-SDMMC MicroSD;							//SDカードクラス
-File SdFile = MicroSD.open(__null);
+SDMMC MicroSD;								//SDカードクラス
+File SdFile = MicroSD.open(__null);			//システム用
 
 //**********************************
 //Sakulua の起動初期化を行います
