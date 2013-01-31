@@ -1,4 +1,4 @@
-----One Line Run
+----Multi Lines Run
 Serial.println("Input end with [Ctrl-z]")
 m=""
 while(true)do
