@@ -20,9 +20,9 @@ if(m:len()==0)then
 else
 	m = m:gsub("^%s*(.-)%s*$", "%1")
 	SD.open( 0, "linesrus.lua", 2 )
-	SD.write(fp, m, m:len())
+	SD.write(0, m, m:len())
 	m=";if(a~=nil)then Serial.println(a) end;"
-	SD.write(fp, m, m:len())
-	SD.close( fp ) 
+	SD.write(0, m, m:len())
+	SD.close(0) 
 	sys.setrun("linesrus.lua")
 end
