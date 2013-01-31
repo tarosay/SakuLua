@@ -1,8 +1,8 @@
---LuaLoader
+----LuaLoader
 fm=""
 while(true)do
 	repeat 
-		k = Serial.read()	--文字入力があるまで待つ
+		k = Serial.read()
 	until(k~=-1)
 	if(k==10)then break end
 	fm=fm..string.format("%c",k)
@@ -27,6 +27,8 @@ while(true)do
 			if(l==110)then
 				eflg = 1
 				break
+			else
+				k=l
 			end
 			t=millis()+1000
 		end
@@ -36,8 +38,6 @@ while(true)do
 	SD.write( fp, string.format("%c",k), 1 )
 end
 SD.close( fp ) 
-pinMode(100,1)
-digitalWrite(100,1)	--LEDを点ける
 SD.open(fp, fm) 
 while(true)do
 	k=SD.read(fp)

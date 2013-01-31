@@ -15,12 +15,11 @@ while(true)do
 		end
 		Serial.print(string.format("%c",k))
 	end
-	--Serial.println("m:len()="..m:len())
 	if(m:len()==0)then break end
 	m = m:gsub("^%s*(.-)%s*$", "%1")
 	ans = loadstring( "return {"..m.."}" )()[1]
 	if(ans~=nill)then
-		Serial.println("\n>"..ans)
+		Serial.println("\n"..ans)
 	else
 		Serial.println("")
 	end
