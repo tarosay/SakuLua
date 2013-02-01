@@ -32,6 +32,7 @@ int sysExit( lua_State *LuaLinkP );
 //フラッシュメモリに書き込みます: sys.push
 //sys.push(address, buf, length)
 //	address: 書き込み開始アドレス(0x0000～0x7fff)
+//  buf: 書き込むデータ
 //  length: 書き込むサイズ
 // 戻り値
 //  1:成功, 0:失敗
