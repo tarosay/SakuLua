@@ -1,8 +1,9 @@
-----Multi Lines Run
+--Multi Lines Run
+repeat k=Serial.read() until(k<0)
 Serial.println("Input end with [Ctrl-z]")
 m=""
 while(true)do
-	repeat 
+	repeat
 		k = Serial.read()
 	until(k>0)
 	if(k==26)then break end
