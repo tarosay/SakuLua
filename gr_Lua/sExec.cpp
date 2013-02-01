@@ -1,10 +1,10 @@
 //************************************************************************
-// SakuLuaの呼び出し実行モジュールプログラム 2013.1.29 v1.07
+// SakuLuaの呼び出し実行モジュールプログラム 2013.2.1 v1.08
 //************************************************************************
 #include <rxduino.h>
 #include <string.h>
 
-volatile char	ProgVer[] = {"1.07"};
+volatile char	ProgVer[] = {"1.08"};
 
 #include "../gr_sakura_sdmmc/sdmmc.h"
 #include "sExec.h"
@@ -27,7 +27,6 @@ extern SDMMC MicroSD;
 extern File SdFile;
 
 static const luaL_Reg RTCTbl[] = {
-// 	{"begin", adkRTCbegin },
 	{"set", adkRTCsetDateTime },
  	{"get", adkRTCgetDateTime },
 	{NULL,NULL}
@@ -62,9 +61,11 @@ static const luaL_Reg SerialTbl[] = {
 };
 
 static const luaL_Reg SystemTbl[] = {
-	{"setrun", setRun },
-	{"ver", ver },
-	{"exit", systemExit },
+	{"push", sysPush },
+	{"pop", sysPop },
+	{"setrun", sysSetrun },
+	{"ver", sysVer },
+	{"exit", sysExit },
 	{NULL,NULL}
 };
 

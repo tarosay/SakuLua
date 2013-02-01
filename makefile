@@ -16,13 +16,13 @@ OBJFILES = ./gr_sketch.o ./gr_sakura_wire/instwire.o ./gr_common/intvect.o ./gr_
 
 LIBFILES = ./gr_common/lib/libc.a ./gr_common/lib/libg.a ./gr_common/lib/libgcc.a ./gr_common/lib/libm.a ./gr_common/lib/librxduino.a \
 			./gr_common/lib/libsim.a ./gr_common/lib/libstdc++.a ./gr_common/lib/libsupc++.a ./gr_common/lib/libtkdnhal.a \
-			./gr_common/lib/libtkdnip.a ./gr_sakura_wire/libwire.a ./gr_sakura_sdmmc/libsdmmc.a 
+			./gr_common/lib/libtkdnip.a ./gr_sakura_wire/libwire.a ./gr_sakura_sdmmc/libsdmmc.a ./gr_sakura_eeprom/libeeprom.a 
 
 CCINC = -I./gr_build -I./gr_common -I./gr_common/include -I./gr_common/include/rxduino -I./gr_common/include/tkdnhal \
-		-I./gr_common/lib -I./gr_sakura_wire -I./gr_Lua/lua -I./gr_Lua -I./gr_sakura_sdmmc 
+		-I./gr_common/lib -I./gr_sakura_wire -I./gr_Lua/lua -I./gr_Lua -I./gr_sakura_sdmmc -I./gr_sakura_eeprom 
 
 CPPINC = -I./gr_build -I./gr_common -I./gr_common/include -I./gr_common/include/rxduino -I./gr_common/include/tkdnhal \
-		-I./gr_common/lib -I./gr_sakura_wire -I./gr_Lua/lua -I./gr_Lua -I./gr_sakura_sdmmc 
+		-I./gr_common/lib -I./gr_sakura_wire -I./gr_Lua/lua -I./gr_Lua -I./gr_sakura_sdmmc -I./gr_sakura_eeprom 
 
 
 TARGET = sketch

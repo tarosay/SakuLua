@@ -1,4 +1,4 @@
-SakuLua Ver 1.07
+SakuLua Ver 1.08
 SakuLua is a program for executing a Lua script alone GR-SAKURA.
 
 How to Build
@@ -62,5 +62,5 @@ $ patch < lua-5.1.5.patch
 
 Lua is more than ready for.
 
-To build a SakuLua, is required 'I2C Library for GR-SAKURA' and 'SDMMC Library for GR-SAKURA'.
+To build a SakuLua, is required 'I2C Library for GR-SAKURA' and 'SDMMC Library for GR-SAKURA' and 'EEPROM Library for GR-SAKURA'.
 After Import of these, please build.

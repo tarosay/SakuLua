@@ -7,22 +7,6 @@
 #include "sExec.h"
 
 //**************************************************
-// 32.768KHz水晶を発振させてRTCを起動する: RTC.begin
-//	RTC.begin()
-//
-// 結果が返る
-//**************************************************
-//int adkRTCbegin( lua_State *LuaLinkP )
-//{
-//	//RTCスタート
-//	int ret = RTC::begin();
-//
-//	lua_settop(LuaLinkP, 0);
-//	lua_pushnumber( LuaLinkP, ret );
-//	return( 1 );		//戻り値は無しですよ。
-//}
-
-//**************************************************
 // RTCの時計をセットする: RTC.set
 //	RTC.set( year, mon, day, hour, min, sec)
 //	year: 西暦

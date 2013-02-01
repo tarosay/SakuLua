@@ -1,14 +1,14 @@
-SakuLua Ver 1.06  
-　SakuLuaは GR-SAKURA 単体で Luaスクリプトを実行するためのプログラムです。  
-  
-ビルド方法  
-　Luaに関しては、Lua-5.1.5を元に作成しています。下記のURLより、Lua-5.1.5のソースを入手してください。  
-Lua Version history [here](http://www.lua.org/versions.html#5.1)  
-The current release is Lua 5.1.5, released on 17 Feb 2012.  
+SakuLua Ver 1.08
+　SakuLuaは GR-SAKURA 単体で Luaスクリプトを実行するためのプログラムです。
 
- Lua-5.1.5を解凍した後、srcフォルダから以下のファイルを取り出して、gr_Lua/luaフォルダに置いた後、lua-5.1.5.patchを当ててください。  
+ビルド方法
+　Luaに関しては、Lua-5.1.5を元に作成しています。下記のURLより、Lua-5.1.5のソースを入手してください。
+Lua Version history [here](http://www.lua.org/versions.html#5.1)
+The current release is Lua 5.1.5, released on 17 Feb 2012.
 
-gr_Lua/lua/ に下記のファイルを置く。  
+ Lua-5.1.5を解凍した後、srcフォルダから以下のファイルを取り出して、gr_Lua/luaフォルダに置いた後、lua-5.1.5.patchを当ててください。
+
+gr_Lua/lua/ に下記のファイルを置く。
 	lapi.c
 	lapi.h
 	lauxlib.c
